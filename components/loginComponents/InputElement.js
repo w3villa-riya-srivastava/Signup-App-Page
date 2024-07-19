@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
 
 const InputElement = ({email, password, setEmail, setPassword}) => {
   return (
@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
   email: {
     color: 'black',
     fontWeight: 'bold',
-    marginTop: 30,
+    marginTop: 20,
+    marginHorizontal:20
   },
   input: {
     borderWidth: 1,
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderRadius: 10,
     marginTop: 8,
+    marginHorizontal: 20
   },
 });
 

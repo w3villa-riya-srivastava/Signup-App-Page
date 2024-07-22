@@ -1,19 +1,19 @@
 import React from 'react';
 import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
-
+//LOGIN PAGE
 const InputElement = ({email, password, setEmail, setPassword}) => {
   return (
     <View>
-      <Text style={styles.email}>Email</Text>
+      <Text style={styles.inputTitle}>Email</Text>
       <TextInput
-        style={styles.input}
+        style={styles.inputValue}
         placeholder="Your email"
         value={email}
         onChangeText={text => setEmail(text)}
       />
-      <Text style={styles.email}>Password</Text>
+      <Text style={styles.inputTitle}>Password</Text>
       <TextInput
-        style={styles.input}
+        style={styles.inputValue}
         placeholder="Password"
         value={password}
         onChangeText={text => setPassword(text)}
@@ -24,19 +24,19 @@ const InputElement = ({email, password, setEmail, setPassword}) => {
 };
 
 const styles = StyleSheet.create({
-  email: {
+  inputTitle: {
     color: 'black',
     fontWeight: 'bold',
-    marginTop: 20,
+    marginTop: 12,
     marginHorizontal:20
   },
-  input: {
+  inputValue: {
     borderWidth: 1,
     paddingHorizontal: 16,
     borderColor: 'black',
     borderRadius: 10,
-    marginTop: 8,
-    marginHorizontal: 20
+    marginTop: 2,
+    marginHorizontal: 20,
   },
 });
 

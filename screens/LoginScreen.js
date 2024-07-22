@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   View,
   ImageBackground,
+  ScrollView,
 } from 'react-native';
 import InputElement from '../components/loginComponents/InputElement';
-import babelConfig from '../babel.config';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -24,23 +24,24 @@ const LoginScreen = () => {
   };
 
   return (
-    <ImageBackground
-      source={require('../assets/app-background.jpg')}
+    // Scrollview is used to dismiss the keyboard 
+    <ScrollView>
+      <ImageBackground
+      source={require('../assets/images/app-background.jpg')}
       style={{zIndex: -1}}>
       <View>
         <Text style={styles.text1}>Let's Sign you in.</Text>
         <Text style={styles.text2}>Welcome back.</Text>
-        <Text style={styles.text3}>You've been missed!</Text>
       </View>
-      <View style={{marginTop:40,borderTopRightRadius: 30, borderTopLeftRadius: 30, backgroundColor: 'white', zIndex: 1}}>
-        <Text style={styles.signin}>Sign In</Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>Sign In</Text>
         <InputElement
           email={email}
           setEmail={setEmail}
           password={password}
           setPassword={setPassword}
         />
-        <Text style={styles.forgot}>Forgot Password?</Text>
+        {/* <Text style={styles.forgot}>Forgot Password?</Text> */}
         <TouchableOpacity onPress={pressHandler}>
           <View style={styles.signinButton}>
             <Text style={{color: 'white', fontSize: 22, padding: 5}}>
@@ -49,7 +50,7 @@ const LoginScreen = () => {
           </View>
         </TouchableOpacity>
         <View style={{alignItems: 'center'}}>
-          <Text style={{color: 'black', marginTop: 12, alignItems: 'center'}}>
+          <Text style={{color: 'black', marginTop: 10, alignItems: 'center'}}>
             Don't have an account? {''} 
             <Text style={{color: 'black', fontWeight:'bold', textDecorationLine: 'underline'}}>
               Sign Up
@@ -63,6 +64,7 @@ const LoginScreen = () => {
           <Text style={[styles.common, {fontSize: 13}]}>I am good </Text>
         </View> */}
     </ImageBackground>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
@@ -79,20 +81,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginHorizontal:20
   },
-  text3: {
-    fontSize: 28,
-    color: 'white',
-    marginHorizontal:20
-  },
-  forgot:{
-    color: 'black',
-    fontWeight: 'bold',
-    textAlign: 'right',
-    marginTop: 10,
-    textDecorationLine: 'underline',
-    marginHorizontal:20
-  },
-  signin:{
+  title:{
     fontSize: 28,
     color: 'black',
     textAlign: 'center',
@@ -100,6 +89,21 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginHorizontal:20
   },
+  container:{
+    marginTop:25,
+    borderTopRightRadius: 30, 
+    borderTopLeftRadius: 30, 
+    backgroundColor: 'white', 
+    zIndex: 1
+  },
+    // forgot:{
+  //   color: 'black',
+  //   fontWeight: 'bold',
+  //   textAlign: 'right',
+  //   marginTop: 10,
+  //   textDecorationLine: 'underline',
+  //   marginHorizontal:20
+  // },
   signinButton: {
     backgroundColor: 'black',
     height: 50,
@@ -109,9 +113,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal:20,
     marginTop:25
-  },
-  common: {
-    color: 'black',
   },
 });
 

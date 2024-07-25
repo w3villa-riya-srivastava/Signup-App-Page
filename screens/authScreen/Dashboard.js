@@ -10,33 +10,23 @@ import {
   ScrollView,
 } from 'react-native';
 
-const EmailVerify = () => {
-
+const Dashboard = () => {
+  const [number, onChangeNumber] = React.useState('');
   const pressHandler = () => {
-    alert("Verified Failed! Try Again!");
+    alert("Verified Successfuly!");
     };    
 return (
-  <ScrollView>
+  <ScrollView contentContainerStyle={{flex:1}}>
       <ImageBackground
-    source={require('../assets/images/app-background.jpg')}
-    style={{zIndex: -1}}>
-    <View>
-      <Text style={styles.text1}>Let's Sign you in.</Text>
-      <Text style={styles.text2}>Welcome.</Text>
+    source={require('../../assets/images/app-background.jpg')}
+    style={{zIndex: -1, flex:1}}>
+    <View style={{flex:0.2}}>
+      <Text style={styles.text1}>Welcome to Dashboard!</Text>
+      <Text style={styles.text2}>Jasmine</Text>
     </View>
     <View style={styles.container}>
-      <Text style={styles.title}>Verification</Text>
-      <Text style={styles.text3}>We have sent a verification link to your email address. Please click the link to verify your email address.</Text>
-      <TouchableOpacity onPress={pressHandler}>
-          <View style={styles.signinButton}>
-            <Text style={{color: 'white', fontSize: 22, padding: 5}}>
-              Verify
-            </Text>
-          </View>
-        </TouchableOpacity>
-
+      <Text style={styles.title}>Create Your Profile</Text>
     </View>
-
   </ImageBackground>
   </ScrollView>
 );
@@ -60,7 +50,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30, 
     borderTopLeftRadius: 30, 
     backgroundColor: 'white', 
-    zIndex: 1
+    zIndex: 1,
+    flex:0.8
   },
   title:{
     fontSize: 28,
@@ -70,6 +61,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginHorizontal:20
   },
+  //normal text
   text3:{
     fontSize: 16,
     marginTop: 12,
@@ -84,8 +76,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal:20,
-    marginTop:25
+    marginTop:20
   }
 });
 
-export default EmailVerify;
+export default Dashboard;

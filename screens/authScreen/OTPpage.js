@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   Keyboard,
   StyleSheet,
@@ -12,24 +12,28 @@ import {
 } from 'react-native';
 
 const OTPpage = () => {
-    const [number, onChangeNumber] = React.useState('');
+  const textRef = useRef()
+    const [number, onChangeNumber] = useState('');
     const pressHandler = () => {
       alert("Verified Successfuly!");
-      };    
+      };  
+      
+      // console.log("textRef", textRef?.current?.focus())
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={{flex:1}}>
         <ImageBackground
-      source={require('../assets/images/app-background.jpg')}
-      style={{zIndex: -1}}>
-      <View>
+      source={require('../../assets/images/app-background.jpg')}
+      style={{zIndex: -1, flex:1}}>
+      <View style={{flex:0.2}}>
         <Text style={styles.text1}>Let's Sign you in.</Text>
         <Text style={styles.text2}>Welcome.</Text>
       </View>
       <View style={styles.container}>
-        <Text style={styles.title}>Verification</Text>
+        <Text style={styles.title}>OTP Verification</Text>
         <Text style={styles.text3}>We've sent a verification code to verify your mobile number.</Text>
       <View style={styles.otp}>
       <TextInput
+        ref={textRef}
         style={styles.inputValue}
         onChangeText={onChangeNumber}
         value={number}
@@ -65,7 +69,6 @@ const OTPpage = () => {
           </View>
         </TouchableOpacity>
       </View>
-
     </ImageBackground>
     </ScrollView>
   );
@@ -89,7 +92,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30, 
     borderTopLeftRadius: 30, 
     backgroundColor: 'white', 
-    zIndex: 1
+    zIndex: 1,
+    flex:0.8
   },
   title:{
     fontSize: 28,
@@ -126,7 +130,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal:20,
-    marginTop:25
+    marginTop:20
   },
 });
 

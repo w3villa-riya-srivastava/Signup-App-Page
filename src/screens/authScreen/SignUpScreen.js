@@ -21,8 +21,12 @@ const SignUpScreen = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigation = useNavigation();
+  const [isEmailError, setIsEmailError] = useState(false);
 
   const pressHandler = () => {
+    if (!email) {
+      setIsEmailError(true);
+    }
     const data = {
       email: email,
       mobileno: mobileno,
@@ -35,6 +39,12 @@ const SignUpScreen = () => {
     setPassword('');
     setConfirmPassword('');
     // alert("We've sent an confirmation email to your email address and an OTP on your mobile number.");
+  };
+
+  const onBlur = () => {
+    if (!email) {
+      setIsEmailError(true);
+    }
   };
   return (
     <ScrollView contentContainerStyle={{flex: 1}}>
@@ -53,7 +63,13 @@ const SignUpScreen = () => {
             value={email}
             setValue={setEmail}
             isSecure={false}
+            onBlur={onBlur}
           />
+          {isEmailError && (
+            <Text style={{textAlign: 'right', color: 'red'}}>
+              Please enter an email
+            </Text>
+          )}
           <CustomInputElement
             inputTitle="Mobile Number"
             placeholder="Your Mobile Number"
@@ -102,24 +118,32 @@ const SignUpScreen = () => {
 
           {/* Separator */}
 
-          <View style={{flexDirection:'row', justifyContent:'center', marginTop:15}}>
-          <Divider color='black' style={{marginBottom:8, width:125}} />
-          <Text style={{marginTop:8}}>  or login with  </Text>
-          <Divider color='black' style={{marginBottom:8, width:125}} />
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              marginTop: 15,
+            }}>
+            <Divider color="black" style={{marginBottom: 8, width: 125}} />
+            <Text style={{marginTop: 8}}> or login with </Text>
+            <Divider color="black" style={{marginBottom: 8, width: 125}} />
           </View>
 
           {/* Social Signin  */}
 
           <View
             style={{flexDirection: 'row', alignSelf: 'center', marginTop: 20}}>
-            <TouchableOpacity onPress={()=>{console.log("Facebook logged in")}}>
-            <Icon
-              type="font-awesome"
-              name="facebook-official"
-              size={42}
-              color={'black'}
-              marginHorizontal={6}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                console.log('Facebook logged in');
+              }}>
+              <Icon
+                type="font-awesome"
+                name="facebook-official"
+                size={42}
+                color={'black'}
+                marginHorizontal={6}
+              />
             </TouchableOpacity>
             {/* <Icon
               type="font-awesome"
@@ -133,22 +157,24 @@ const SignUpScreen = () => {
               padding={10}
               marginHorizontal={5}
             /> */}
-            <TouchableOpacity onPress={()=>{console.log("Google logged in")}}>
-            <Icon
-              type="font-awesome"
-              name="google"
-              size={26}
-              color={'white'}
-              backgroundColor={'black'}
-              height={42}
-              width={42}
-              borderRadius={21}
-              padding={8}
-              marginHorizontal={6}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                console.log('Google logged in');
+              }}>
+              <Icon
+                type="font-awesome"
+                name="google"
+                size={26}
+                color={'white'}
+                backgroundColor={'black'}
+                height={42}
+                width={42}
+                borderRadius={21}
+                padding={8}
+                marginHorizontal={6}
+              />
             </TouchableOpacity>
           </View>
-          
         </View>
       </ImageBackground>
     </ScrollView>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 //SIGNUP PAGE
-const CustomInputElement = ({inputTitle, placeholder, value, setValue, isSecure, keyboardType}) => {
+const CustomInputElement = ({inputTitle, placeholder, value, setValue, isSecure, keyboardType, onBlur}) => {
   return (
     <View>
       <Text style={styles.inputTitle}>{inputTitle}</Text>
@@ -12,6 +12,7 @@ const CustomInputElement = ({inputTitle, placeholder, value, setValue, isSecure,
         onChangeText={text => setValue(text)}
         secureTextEntry={isSecure}
         keyboardType={keyboardType ? keyboardType : 'default'}
+        onBlur={onBlur}
       />
     </View>
   );

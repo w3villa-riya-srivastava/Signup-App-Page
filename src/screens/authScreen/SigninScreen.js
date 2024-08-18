@@ -123,7 +123,7 @@ const SigninScreen = () => {
 };
 const styles = StyleSheet.create({
   text1: {
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Black',
     fontSize: 30,
     color: 'white',
     marginTop: 40,
